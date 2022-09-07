@@ -11,19 +11,21 @@ export default function Home() {
         width="100%"
         maxWidth={360}
         bg="gray.800"
-        p="8"
+        p="7"
         borderRadius={8}
         flexDir="column"
+        align="center"
       >
         <Stack spacing="4">
           <Input name="email" type="email" label="E-mail" />
           <Input name="password" type="password" label="Password" />
         </Stack>
-
-        <Button type="submit" mt="6" colorScheme="pink">
+        <Button type="submit" mt="6" colorScheme="pink" width='100%'>
           Entrar
         </Button>
+
       </Flex>
+
     </Flex>
   );
 }

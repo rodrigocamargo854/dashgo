@@ -17,6 +17,7 @@ export function Header() {
       align="center"
       px="6"
       p={0}
+      
     >
       <Text fontSize="3xl" fontWeight="bold" letterSpacing="tight" w="64">
         dashgo
