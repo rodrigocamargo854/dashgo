@@ -5,7 +5,7 @@ import { NotificationsNav } from "./NotificationsNav";
 import { Profile } from "./Profile";
 import { SearchBox } from "./SearchBox";
 export function Header() {
-//hooks of chackra for  validations of responsivity
+  //hooks of chackra for  validations of responsivity
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true
@@ -25,7 +25,7 @@ export function Header() {
 
     >
       <Logo />
-      <SearchBox />
+      {isWideVersion && <SearchBox />}
       <Flex align="center" ml="auto">
         <NotificationsNav />
         <Profile showProfileData={isWideVersion} />
