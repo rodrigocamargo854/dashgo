@@ -14,7 +14,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { RiAddLine, RiPencilFill } from "react-icons/ri";
-import { Header } from "../components/Form/Header";
+import { Header } from "../components/Header/index";
 import SideBar from "../components/Form/SideBar";
 import { Pagination } from "../components/Pagination";
 
