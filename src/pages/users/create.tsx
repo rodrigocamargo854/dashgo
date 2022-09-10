@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Header } from "../components/Header/index";
 import { Input } from "../components/Form/Input";
-import SideBar from "../components/Form/SideBar";
+import SideBar from "../components/SideBar";
 
 export default function CreateUser() {
     return (
