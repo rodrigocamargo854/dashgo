@@ -21,7 +21,7 @@ export default function SideBar() {
                             Navegação
                         </DrawerHeader>
                         <DrawerBody>
-                            <SideNavBar />
+                            <SideNavBar  />
                         </DrawerBody>
                     </DrawerContent>
                 </DrawerOverlay>
