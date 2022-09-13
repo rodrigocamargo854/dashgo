@@ -12,6 +12,7 @@ import {
 import { Header } from "../components/Header/index";
 import { Input } from "../components/Form/Input";
 import SideBar from "../components/SideBar";
+import Link from "next/link";
 
 export default function CreateUser() {
     return (
@@ -29,16 +30,18 @@ export default function CreateUser() {
                             <Input name="email" type="email" label="E-mail"></Input>
                         </SimpleGrid>
 
-                        <SimpleGrid minChildWidth="248px" spacing={["6","8"]} w="100%">
+                        <SimpleGrid minChildWidth="248px" spacing={["6", "8"]} w="100%">
                             <Input name="password" label="password"></Input>
                             <Input name="password_confirmation" type=" password" label="confirmação da senha"></Input>
                         </SimpleGrid>
                     </VStack>
                     <Flex mt='8' justify='flex-end' >
                         <HStack spacing='4'>
-                            <Button colorScheme="whiteAlpha">
-                                Cancelar
-                            </Button>
+                            <Link href ='/users' >
+                                <Button as='a' colorScheme="whiteAlpha">
+                                    Cancelar
+                                </Button>
+                            </Link>
                             <Button colorScheme="pink">
                                 Salvar
                             </Button>
