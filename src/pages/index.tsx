@@ -1,22 +1,33 @@
 import { Flex, Button, Stack } from "@chakra-ui/react";
 import { Input } from "./components/Form/Input";
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm, FieldError } from 'react-hook-form'
+import {yupResolver} from "@hookform/resolvers"
+import * as yup from 'yup'
 
 
 
 
-type SignInFormData={
-  email:string
-  password:string
+const signInFormSchma= yup.object().shape({
+
+  
+})
+
+type SignInFormData = {
+  email: string
+  password: string
+  errors: FieldError
 }
 export default function SignIn() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
 
-  const  handleSigIn: SubmitHandler<SignInFormData> = (values) => {
+  const handleSigIn: SubmitHandler<SignInFormData> = async (values) => {
+    await new Promise(resolve => setTimeout(resolve, 2000))
     console.log(values)
-
   }
+  const { errors } = formState
 
+
+  console.log(errors)
   return (
     <Flex w="100wh" h="100vh" align="center" justify="center">
       <Flex
@@ -31,10 +42,28 @@ export default function SignIn() {
         onSubmit={handleSubmit(handleSigIn)}
       >
         <Stack spacing="4">
-          <Input name="email" type="email" label="E-mail" ref={register}/>
-          <Input name="password" type="password" label="Password" ref={register}/>
+          <Input
+            name="email"
+            type="email"
+            label="E-mail"
+            error={errors.email}
+            {...register('email', { required: 'Email obrigatório' })}
+          />
+          <Input
+            name="password"
+            type="password"
+            label="Password"
+            error={errors.password}
+            {...register('password')}
+          />
+
         </Stack>
-        <Button type="submit" mt="6" colorScheme="pink" width='100%'>
+        <Button
+          isLoading={formState.isSubmitting}
+          type="submit"
+          mt="6"
+          colorScheme="pink"
+          width='100%'>
           Entrar
         </Button>
       </Flex>
