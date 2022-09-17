@@ -6,10 +6,9 @@ import * as yup from 'yup'
 
 
 
-
 const signInFormSchma= yup.object().shape({
-email: yup.string().required().email(),
-password: yup.string().required(),
+email: yup.string().required('email obrigatório').email('formato de email invalido'),
+password: yup.string().required('password obrigatório'),
   
 })
 
@@ -18,6 +17,7 @@ type SignInFormData = {
   password: string
   errors: FieldError
 }
+
 export default function SignIn() {
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchma)
@@ -25,12 +25,10 @@ export default function SignIn() {
 
   const handleSigIn: SubmitHandler<SignInFormData> = async (values) => {
     await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log(values)
   }
   const { errors } = formState
 
 
-  console.log(errors)
   return (
     <Flex w="100wh" h="100vh" align="center" justify="center">
       <Flex
