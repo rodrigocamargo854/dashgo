@@ -75,14 +75,14 @@ export default function CreateUser() {
               <Input
                 name="name"
                 label="Nome completo"
-                error={errors.name}
+                error={errors.name as FieldError}
                 {...register("name")}
               />
               <Input
                 name="email"
                 type="email"
                 label="E-mail"
-                error={errors.email}
+                error={errors.email as FieldError }
                 {...register("email")}
               />
             </SimpleGrid>
@@ -92,14 +92,14 @@ export default function CreateUser() {
                 name="password"
                 type="password"
                 label="Senha"
-                error={errors.password}
+                error={errors.password as FieldError}
                 {...register("password")}
               />
               <Input
                 name="password_confirmation"
                 type="password"
                 label="Confirmação de senha"
-                error={errors.password_confirmation}
+                error={errors.password_confirmation as FieldError}
                 {...register("password_confirmation")}
               />
             </SimpleGrid>

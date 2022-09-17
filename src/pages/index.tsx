@@ -51,14 +51,14 @@ export default function SignIn() {
             name="email"
             type="email"
             label="E-mail"
-            error={errors.email}
+            error={errors.email as FieldError}
             {...register("email", { required: "Email obrigatório" })}
           />
           <Input
             name="password"
             type="password"
             label="Password"
-            error={errors.password}
+            error={errors.password as FieldError}
             {...register("password")}
           />
         </Stack>
