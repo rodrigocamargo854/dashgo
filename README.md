@@ -15,12 +15,6 @@
 * Design completo usando o Charka UI, também com sua versão responsiva
 * Verificação de erros nos campos de formulário usando Yup + React Hook Form
 
-&nbsp;
-
-![mock2](https://user-images.githubusercontent.com/71772559/113496313-c8532c80-94ce-11eb-9404-1b48d8febbb8.png)
-
-&nbsp;
-
 ## 🛠️ Tecnologias/Ferramentas ultilizadas
 
 * [React](https://pt-br.reactjs.org/E)
