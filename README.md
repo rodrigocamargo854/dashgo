@@ -1,34 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dashgo 💜 | Dashboard feito com Chakra UI
 
-## Getting Started
+&nbsp;
 
-First, run the development server:
+![mock1](https://user-images.githubusercontent.com/71772559/113496123-d0aa6800-94cc-11eb-90dd-800b72502003.png)
 
-```bash
-npm run dev
-# or
-yarn dev
+## 📚 Informações sobre o projeto
+
+* Esse projeto foi desenvolvido durante um dos capitulos do Ignite da Rocketseat! A ideia era desenvolver um dashboard usando completamente o Chakra UI, também deixando a aplicação responsiva.
+
+&nbsp;
+
+## 💻 O que tem no projeto?
+
+* Design completo usando o Charka UI, também com sua versão responsiva
+* Verificação de erros nos campos de formulário usando Yup + React Hook Form
+
+&nbsp;
+
+![mock2](https://user-images.githubusercontent.com/71772559/113496313-c8532c80-94ce-11eb-9404-1b48d8febbb8.png)
+
+&nbsp;
+
+## 🛠️ Tecnologias/Ferramentas ultilizadas
+
+* [React](https://pt-br.reactjs.org/E)
+* [Next.js](https://nextjs.org/)
+* [Chakra UI](https://chakra-ui.com/)
+* [Yup](https://github.com/jquense/yup)
+* [React Hook Form](https://react-hook-form.com/)
+
+&nbsp;
+
+<img src="https://user-images.githubusercontent.com/71772559/113496052-32b69d80-94cc-11eb-87ae-a1abda0e06f9.gif" width="100%" />
+
+&nbsp;
+
+## ⚙️ Instalação
+```
+# Abra um terminal e copie este repositório com o comando
+$ git clone https://github.com/rodrigocamargo854/dashgo.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+# Acesse a pasta da aplicação
+$ cd dashgo
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Instale as dependências
+$ yarn
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Inicie a aplicação
+$ yarn start
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">Feito com 💙 por Rodrigo Camargo</p>

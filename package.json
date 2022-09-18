@@ -21,6 +21,7 @@
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18",
     "react-hook-form": "^7.35.0",
+    "yarn": "^1.22.19",
     "yup": "^0.32.11"
   },
   "devDependencies": {
