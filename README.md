@@ -29,11 +29,6 @@
 * [Yup](https://github.com/jquense/yup)
 * [React Hook Form](https://react-hook-form.com/)
 
-&nbsp;
-
-<img src="https://user-images.githubusercontent.com/71772559/113496052-32b69d80-94cc-11eb-87ae-a1abda0e06f9.gif" width="100%" />
-
-&nbsp;
 
 ## ⚙️ Instalação
 ```
