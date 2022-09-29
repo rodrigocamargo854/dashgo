@@ -13,13 +13,25 @@ import {
   Td,
   Text,
   useBreakpointValue,
+  useFocusEffect,
+  Spinner,
 } from "@chakra-ui/react";
 import { RiAddLine, RiPencilFill } from "react-icons/ri";
 import { Header } from "../components/Header/index";
 import { Pagination } from "../components/Pagination";
 import SideBar from "../components/SideBar";
 import Link from "next/link";
+
+import { useQuery } from "react-query";
+
 export default function UserList() {
+  const { data, isLoading, error } = useQuery("users", async () => {
+    const response = await fetch("http://localhost:3000/api/users");
+    const data = await response.json();
+
+    return data;
+  });
+
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
@@ -47,47 +59,58 @@ export default function UserList() {
               </Button>
             </Link>
           </Flex>
-
-          <Table colorScheme="whiteAlpha">
-            <Thead>
-              <Tr>
-                <Th px={["4", "4", "6"]} color="gray.300" width="8">
-                  <Checkbox colorScheme="pink" />
-                </Th>
-                <Th>Usuários</Th>
-                {isWideVersion && <Th>Data de cadastros</Th>}
-                <Th width="0"></Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td px={["4", "4", "6"]}>
-                  <Checkbox colorScheme="pink" />
-                </Td>
-                <Td px={["4", "4", "6"]}>
-                  <Box>
-                    <Text fontWeight="bold">Rodrigo Camargo</Text>
-                    <Text fontSize="sm" color="gray.300">
-                      rodrigocamargo854@gmail.com
-                    </Text>
-                  </Box>
-                </Td>
-                {isWideVersion && <Td>04 de abril, 2021</Td>}
-                <Td>
-                  <Button
-                    as="a"
-                    size="small"
-                    fontSize="small"
-                    colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilFill} />}
-                  >
-                    Criar Novo Usuário
-                  </Button>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-          <Pagination />
+          {isLoading ? (
+            <Flex justify="center">
+              <Spinner />
+            </Flex>
+          ) : error ? (
+            <Flex justify="center">
+              <Text>Falha ao obter dados dos usuarios</Text>
+            </Flex>
+          ) : (
+            <>
+              <Table colorScheme="whiteAlpha">
+                <Thead>
+                  <Tr>
+                    <Th px={["4", "4", "6"]} color="gray.300" width="8">
+                      <Checkbox colorScheme="pink" />
+                    </Th>
+                    <Th>Usuários</Th>
+                    {isWideVersion && <Th>Data de cadastros</Th>}
+                    <Th width="0"></Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  <Tr>
+                    <Td px={["4", "4", "6"]}>
+                      <Checkbox colorScheme="pink" />
+                    </Td>
+                    <Td px={["4", "4", "6"]}>
+                      <Box>
+                        <Text fontWeight="bold">Rodrigo Camargo</Text>
+                        <Text fontSize="sm" color="gray.300">
+                          rodrigocamargo854@gmail.com
+                        </Text>
+                      </Box>
+                    </Td>
+                    {isWideVersion && <Td>04 de abril, 2021</Td>}
+                    <Td>
+                      <Button
+                        as="a"
+                        size="small"
+                        fontSize="small"
+                        colorScheme="purple"
+                        leftIcon={<Icon as={RiPencilFill} />}
+                      >
+                        Criar Novo Usuário
+                      </Button>
+                    </Td>
+                  </Tr>
+                </Tbody>
+              </Table>
+              <Pagination />
+            </>
+          )}
         </Box>
       </Flex>
     </Box>
