@@ -23,13 +23,12 @@ import SideBar from "../components/SideBar";
 import Link from "next/link";
 
 import { useQuery } from "react-query";
+import { api } from "../services/mirage/api";
 
 export default function UserList() {
-  const { data, isLoading, error, isFetching,refetch} = useQuery(
+  const { data, isLoading, error, isFetching, refetch } = useQuery(
     "users",
-    async () => {
-      const response = await fetch("http://localhost:3000/api/users");
-      const data = await response.json();
+    async () => {const { data } = await api.get("users");
 
       const users = data.users.map((user) => {
         return {
@@ -78,21 +77,20 @@ export default function UserList() {
               >
                 Criar Novo Usuário
               </Button>
-              
             </Link>
-              
-              
           </Flex>
           <Button
-                ml='2rem'
-                size="small"
-                fontSize="small"
-                colorScheme="pink"
-                leftIcon={<Icon as={RiAddLine} />}
-                onClick={()=>{refetch()}}
-              >
-                atualizar página
-              </Button>
+            ml="2rem"
+            size="small"
+            fontSize="small"
+            colorScheme="pink"
+            leftIcon={<Icon as={RiAddLine} />}
+            onClick={() => {
+              refetch();
+            }}
+          >
+            atualizar página
+          </Button>
           {isLoading ? (
             <Flex justify="center">
               <Spinner />
@@ -141,7 +139,6 @@ export default function UserList() {
                             >
                               Criar Novo Usuário
                             </Button>
-                           
                           </Td>
                         </Tr>
                       </>
