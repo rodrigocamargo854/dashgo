@@ -21,33 +21,13 @@ import { Header } from "../components/Header/index";
 import { Pagination } from "../components/Pagination";
 import SideBar from "../components/SideBar";
 import Link from "next/link";
+import { useUsers } from "../services/mirage/hooks/users/useUsers";
 
-import { useQuery } from "react-query";
-import { api } from "../services/mirage/api";
+
+
 
 export default function UserList() {
-  const { data, isLoading, error, isFetching, refetch } = useQuery(
-    "users",
-    async () => {const { data } = await api.get("users");
-
-      const users = data.users.map((user) => {
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          createAt: new Date(user.createAt).toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          }),
-        };
-      });
-      return users;
-    },
-    {
-      staleTime: 1000 * 5, //5seconds,
-    }
-  );
+  const { data, isLoading, error, isFetching, refetch } = useUsers()
 
   const isWideVersion = useBreakpointValue({
     base: false,
