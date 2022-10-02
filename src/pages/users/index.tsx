@@ -23,11 +23,8 @@ import SideBar from "../components/SideBar";
 import Link from "next/link";
 import { useUsers } from "../services/mirage/hooks/users/useUsers";
 
-
-
-
 export default function UserList() {
-  const { data, isLoading, error, isFetching, refetch } = useUsers()
+  const { data, isLoading, error, isFetching, refetch } = useUsers();
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -126,7 +123,12 @@ export default function UserList() {
                   })}
                 </Tbody>
               </Table>
-              <Pagination />
+              <Pagination
+                totalCountRegisters={200}
+                currentPage={5}
+                onPageChange={() => {}}
+                
+              />
             </>
           )}
         </Box>
