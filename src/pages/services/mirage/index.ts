@@ -54,6 +54,8 @@ export function makeServer() {
         );
       });
       this.post("/users");
+      this.post("/users");
+
       //reset routes
       this.namespace = "";
 

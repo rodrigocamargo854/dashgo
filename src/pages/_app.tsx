@@ -6,12 +6,12 @@ import { theme } from "./styles/theme";
 import { SideBarDrawerProvider } from "./context/SideBarContext";
 import { makeServer } from "./services/mirage";
 import {ReactQueryDevtools} from 'react-query/devtools'
+import { queryClient } from "./services/mirage/queryClient";
 
 if (process.env.NODE_ENV === "development") {
   makeServer();
 }
 
-const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

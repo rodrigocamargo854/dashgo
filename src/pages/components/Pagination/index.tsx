@@ -1,67 +1,82 @@
-import { Box, Button, Stack } from "@chakra-ui/react";
-import generatePageArray from "../../utils/generatePagesArray";
+import { Box, Button, Stack, Text } from "@chakra-ui/react";
 import { PaginationItem } from "./PaginationItem";
 
 interface PaginationProps {
-  totalCountRegisters: number;
-  registersPerPages?: number;
+  totalCountOfRegisters: number;
+  registerPerPage?: number;
   currentPage?: number;
-  onPageChange: (page: number) => void;
+  onPageChange: (page:number) => void;
 }
 
-const sinblingsCount = 1;
+const siblingsCount = 1;
+
+function generatePagesArray(from: number, to: number) {
+  return [...new Array(to - from)]
+    .map((_, index) => {
+      return from + index + 1;
+    })
+    .filter(page => page > 0)
+}
 
 export function Pagination({
-  registersPerPages= 10,
-  totalCountRegisters,
+  totalCountOfRegisters,
   currentPage = 1,
   onPageChange,
+  registerPerPage = 10
 }: PaginationProps) {
-  const lastPage = Math.floor(totalCountRegisters / registersPerPages);
+  const lastPage = Math.ceil(totalCountOfRegisters / registerPerPage);
 
-  //pagination logic
+  const previousPages = currentPage > 1
+    ? generatePagesArray(currentPage - 1 - siblingsCount, currentPage - 1)
+    : []
 
-  const previosPages =
-    currentPage > 1
-      ? generatePageArray(currentPage - 1 - sinblingsCount, currentPage - 1)
-      : [];
-
-  const nextPages =
-    currentPage < lastPage
-      ? generatePageArray(
-          currentPage,
-          Math.min(currentPage + sinblingsCount, lastPage)
-        )
-      : [];
-  //pagination logic
+  const nextPages = currentPage < lastPage
+    ? generatePagesArray(currentPage, Math.min(currentPage + siblingsCount, lastPage))
+    : []
 
   return (
     <Stack
-      direction="row"
+      direction={["column", "row"]}
       mt="8"
       justify="space-between"
       align="center"
       spacing="6"
     >
+
       <Box>
-        <strong>0</strong>-<strong>10</strong> de <strong> 100</strong>
+        <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
       </Box>
-      <Stack direction={["column", "row"]} spacing="2">
-        {/* showing previous pages */}
-        {previosPages.length > 0 &&
-          previosPages.map((page) => {
-            return <PaginationItem number={page} key={page} />;
-          })}
+      <Stack direction="row" spacing="2">
+        
+        {currentPage > (1 + siblingsCount) && (
+          <>
+            <PaginationItem onPageChange={onPageChange} number={1} />
+            { currentPage > (2 + siblingsCount) && (
+              <Text color="gray.400" textAlign="center" width="8">...</Text>
+            )}
+          </>
+        )}
 
-        {/* current pages */}
-        <PaginationItem number={currentPage} isCurrent />
+        {previousPages.length > 0 && previousPages.map(page => (
+          <PaginationItem onPageChange={onPageChange} key={page} number={page} />
+        ))}
 
-        {/* showing nextpages */}
-        {nextPages.length > 0 &&
-          nextPages.map((page) => {
-            return <PaginationItem number={page} key={page} />;
-          })}
+        <PaginationItem onPageChange={onPageChange} number={currentPage} isCurrent/>
+        
+        {nextPages.length > 0 && nextPages.map(page => (
+          <PaginationItem onPageChange={onPageChange} key={page} number={page} />
+        ))}
+
+        {(currentPage + siblingsCount) < lastPage && (
+          <>
+            { ( currentPage + 1 + siblingsCount ) > siblingsCount && (
+              <Text color="gray.400" textAlign="center" width="8">...</Text>
+            )}
+            <PaginationItem onPageChange={onPageChange} number={lastPage} />
+          </>
+        )}
+
       </Stack>
     </Stack>
-  );
+  )
 }
